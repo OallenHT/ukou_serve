@@ -32,13 +32,23 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public User getByEmailAndPwd(String email, String password, HttpServletRequest request) {
+    public User getByEmailAndPwd(String email, String password, HttpSession session) {
 
         User user = userService.getByEmailAndPwd(email, password);
         if (user != null) {
-            request.getSession().setAttribute("loginUser", user);
+            session.setAttribute("loginUser", user);
         }
         return user;
+    }
+
+    @RequestMapping("/logout")
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
+
+    @RequestMapping("/getSession")
+    public User getLoginSession(HttpSession session) {
+        return (User) session.getAttribute("loginUser");
     }
 
     @RequestMapping("/checkName")

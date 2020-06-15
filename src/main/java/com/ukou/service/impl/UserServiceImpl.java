@@ -3,7 +3,6 @@ package com.ukou.service.impl;
 import com.ukou.entity.User;
 import com.ukou.mapper.UserMapper;
 import com.ukou.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
